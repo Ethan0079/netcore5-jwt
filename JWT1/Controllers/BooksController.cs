@@ -10,7 +10,7 @@ namespace JWT.Controllers
     [ApiController]
    public class BooksController : ControllerBase
     {
-        [HttpGet("api/books"), Authorize]
+        [HttpGet("api/books"), Authorize(AuthenticationSchemes = "Bearer")]
         public IActionResult GetAll()
         {
             var currentUser = HttpContext.User;

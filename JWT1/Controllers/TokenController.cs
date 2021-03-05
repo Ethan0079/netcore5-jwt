@@ -37,7 +37,6 @@ namespace JWT.Controllers
 
         private string BuildToken(UserModel user)
         {
-
             var claims = new[] {
                 new Claim(JwtRegisteredClaimNames.Sub, user.Name),
                 new Claim(JwtRegisteredClaimNames.Email, user.Email),
@@ -68,7 +67,7 @@ namespace JWT.Controllers
 
             if (login.Email == "mary@domain.com" && login.Password == "barbie")
             {
-                user = new UserModel { Name = "Mary Smith", Email = "mary@domain.com", Birthdate = new DateTime(2001, 5, 13) };
+                user = new UserModel { Name = "Mary Smith", Email = "mary@domain.com", Birthdate = new DateTime(2010, 5, 13) };
             }
 
             return user;
