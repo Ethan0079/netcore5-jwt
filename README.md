@@ -6,10 +6,6 @@ The *JWT* project defines a Web API application whose authentication is based on
 
 ## Running the project ##
 
-
-The solution contains a _Test_ project with four integration tests validating the application behaviour.
-You can run the tests from Visual Studio 2017 or by typing `dotnet test` in a command window.
-
 If you want to interactively test the application, you can use [Postman](https://www.getpostman.com/) or any other Http client.
 
 1. Run the project from Visual Studio 2017 or by typing `dotnet run` in a command window
@@ -23,6 +19,8 @@ If you want to interactively test the application, you can use [Postman](https:/
     accept-encoding: gzip, deflate
     Connection: keep-alive
 ```
+
+Or visit the [swagger](http://localhost:63939/swagger/index.html)
 
 This should return a 401 HTTP status code (_Unauthorized_)
 
@@ -38,7 +36,7 @@ This should return a 401 HTTP status code (_Unauthorized_)
     content-length: 39
     Connection: keep-alive
     
-    {username: "mario", password: "secret"}
+    {email: "mario.rossi@domain.com", password: "secret"}
 ```
 
 It returns a JSON object like the following:

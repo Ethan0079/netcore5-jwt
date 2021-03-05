@@ -9,7 +9,7 @@ using System.Text;
 
 namespace JWT.Controllers
 {
-    [Route("api/[controller]")]
+    [ApiController]
     public class TokenController : Controller
     {
         private IConfiguration _config;
@@ -20,7 +20,7 @@ namespace JWT.Controllers
         }
 
         [AllowAnonymous]
-        [HttpPost]
+        [HttpPost("api/token")]
         public IActionResult CreateToken([FromBody]LoginModel login)
         {
             IActionResult response = Unauthorized();
@@ -61,14 +61,14 @@ namespace JWT.Controllers
         {
             UserModel user = null;
 
-            if (login.Username == "mario" && login.Password == "secret")
+            if (login.Email == "mario.rossi@domain.com" && login.Password == "secret")
             {
                 user = new UserModel { Name = "Mario Rossi", Email = "mario.rossi@domain.com", Birthdate = new DateTime(1983, 9, 23)};
             }
 
-            if (login.Username == "mary" && login.Password == "barbie")
+            if (login.Email == "mary@domain.com" && login.Password == "barbie")
             {
-                user = new UserModel { Name = "Mary Smith", Email = "mary.smith@domain.com", Birthdate = new DateTime(2001, 5, 13) };
+                user = new UserModel { Name = "Mary Smith", Email = "mary@domain.com", Birthdate = new DateTime(2001, 5, 13) };
             }
 
             return user;
@@ -77,7 +77,7 @@ namespace JWT.Controllers
 
         public class LoginModel
         {
-            public string Username { get; set; }
+            public string Email { get; set; }
             public string Password { get; set; }
         }
 

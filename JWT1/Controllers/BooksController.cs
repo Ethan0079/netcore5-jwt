@@ -7,11 +7,11 @@ using System.Security.Claims;
 
 namespace JWT.Controllers
 {
-    [Route("api/[controller]")]
-    public class BooksController : Controller
+    [ApiController]
+   public class BooksController : ControllerBase
     {
-        [HttpGet, Authorize]
-        public IEnumerable<Book> Get()
+        [HttpGet("api/books"), Authorize]
+        public IActionResult GetAll()
         {
             var currentUser = HttpContext.User;
             int userAge = 0;
@@ -33,7 +33,7 @@ namespace JWT.Controllers
                 resultBookList = resultBookList.Where(b => !b.AgeRestriction).ToArray();
             }
 
-            return resultBookList;
+            return Ok(resultBookList);
         }
 
         public class Book
